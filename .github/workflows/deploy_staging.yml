@@ -17,9 +17,6 @@ jobs:
     - name: Decode kubeconfig
       run: echo $STAGING_KUBERNETES_KUBECONFIG | base64 --decode > $GITHUB_WORKSPACE/deploy/kubeconfig.yml
 
-    - name: Test
-      run: echo $GITHUB_WORKSPACE/deploy/kubeconfig.yml && cat $GITHUB_WORKSPACE/deploy/kubeconfig.yml
-
     - name: Deploy to DigitalOcean Kubernetes
       run: kubectl --kubeconfig=$GITHUB_WORKSPACE/deploy/kubeconfig.yml apply -f $GITHUB_WORKSPACE/deploy/manifests/deployment.yml
 

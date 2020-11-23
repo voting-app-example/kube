@@ -139,11 +139,11 @@ spec:
       containers:
       - name: result
         image: registry.digitalocean.com/voting-app-example/result
-        imagePullSecrets:
-        - name: voting-app-example-do-registry
         ports:
         - containerPort: 80
           name: result
+      imagePullSecrets:
+      - name: voting-app-example-do-registry
 
 # vote
 ---
@@ -181,11 +181,11 @@ spec:
       containers:
       - name: vote
         image: registry.digitalocean.com/voting-app-example/vote
-        imagePullSecrets:
-        - name: voting-app-example-do-registry
         ports:
         - containerPort: 80
           name: vote
+      imagePullSecrets:
+      - name: voting-app-example-do-registry
 
 # worker
 --- 
@@ -219,5 +219,5 @@ spec:
       containers: 
       - name: worker
         image: registry.digitalocean.com/voting-app-example/worker
-        imagePullSecrets:
-        - name: voting-app-example-do-registry
+      imagePullSecrets:
+      - name: voting-app-example-do-registry

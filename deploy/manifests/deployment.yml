@@ -108,15 +108,17 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: result
   labels:
     app: result
+  name: result
+  namespace: vote
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
-  - port: 5001
+  - name: "result-service"
+    port: 5001
     targetPort: 80
-    name: result-service
+    nodePort: 31001
   selector:
     app: result
 ---
@@ -150,15 +152,17 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: vote
   labels:
-    apps: vote
+    app: vote
+  name: vote
+  namespace: vote
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
-    - port: 5000
-      targetPort: 80
-      name: vote-service
+  - name: "vote-service"
+    port: 5000
+    targetPort: 80
+    nodePort: 31000
   selector:
     app: vote
 ---

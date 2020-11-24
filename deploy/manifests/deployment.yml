@@ -6,6 +6,7 @@ metadata:
   labels: 
     app: redis
   name: redis
+  namespace: vote
 spec: 
   clusterIP: None
   ports:
@@ -21,6 +22,7 @@ metadata:
   name: redis
   labels:
     app: redis
+  namespace: vote
 spec:
   replicas: 1
   selector:
@@ -46,6 +48,7 @@ metadata:
   labels: 
     app: db
   name: db
+  namespace: vote
 spec: 
   clusterIP: None
   ports: 
@@ -61,6 +64,7 @@ metadata:
   name: db
   labels:
     app: db
+  namespace: vote
 spec:
   replicas: 1
   selector:
@@ -120,7 +124,7 @@ spec:
     targetPort: 80
     nodePort: 31001
   selector:
-    name: result
+    app: result
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -128,6 +132,7 @@ metadata:
   name: result
   labels:
     app: result
+  namespace: vote
 spec:
   replicas: 1
   selector:
@@ -164,7 +169,7 @@ spec:
     targetPort: 80
     nodePort: 31000
   selector:
-    name: vote
+    app: vote
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -172,6 +177,7 @@ metadata:
   name: vote
   labels:
     app: vote
+  namespace: vote
 spec:
   replicas: 2
   selector:
@@ -199,6 +205,7 @@ metadata:
   labels: 
     apps: worker
   name: worker
+  namespace: vote
 spec: 
   clusterIP: None
   selector: 

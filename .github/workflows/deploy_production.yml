@@ -5,7 +5,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      STAGING_KUBERNETES_KUBECONFIG: ${{ secrets.PRODUCTION_KUBERNETES_KUBECONFIG }}
+      PRODUCTION_KUBERNETES_KUBECONFIG: ${{ secrets.PRODUCTION_KUBERNETES_KUBECONFIG }}
     steps:
 
     - name: Checkout
